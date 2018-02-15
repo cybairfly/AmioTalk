@@ -1,9 +1,10 @@
 {
-  "name": "amio",
+  "name": "amiotalk",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app",
+    "test": "codeceptjs run --steps --verbose index_test"
   },
   "author": "Tobey",
   "license": "ISC",
