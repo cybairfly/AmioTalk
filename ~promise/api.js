@@ -19,14 +19,14 @@ const getContacts = (channel) => {
 }
 
 const postMessage = (id, message) => {
-  const date = new Date(Date());
-  const hours = `0${date.getHours()}`.slice(-2);
-  const minutes = `0${date.getMinutes()}`.slice(-2);
-  const seconds = `0${date.getSeconds()}`.slice(-2);
-  const time = `Ahoj ${hours}:${minutes}:${seconds}`;
+  // const date = new Date(Date());
+  // const hours = `0${date.getHours()}`.slice(-2);
+  // const minutes = `0${date.getMinutes()}`.slice(-2);
+  // const seconds = `0${date.getSeconds()}`.slice(-2);
+  // const time = `Ahoj ${hours}:${minutes}:${seconds}`;
 
   message.contact.id = `${id}`;
-  message.content.payload = time;
+  // message.content.payload = time;
 
   const config = cfg.getConfig(`messages`, 'post');
   config.data = JSON.stringify(message);

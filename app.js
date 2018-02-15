@@ -20,11 +20,7 @@ app.post('/webhook/amio', (req, res) => {
 
   api.getContact(channel, contact)
   .then(contact => api.getFullName(contact))
-  .then(name => {
-    let message = msg.Message(channel, contact);
-    message.payload = `${name}: ${message}`;
-    return message;
-  })
+  .then(name => msg.Message(channel, contact, `${name}: ${message}`))
   .then(message => api.postMessages(channel, message))
   .catch(e => console.log(e));
   // let channel = req.body.data.channel.id;

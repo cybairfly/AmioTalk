@@ -8,11 +8,11 @@ const Request = (channel, contact) => ({
     }
 });
 
-const Message = (channel, contact) => {
+const Message = (channel, contact, payload) => {
   const request = Request(channel, contact);
   request.content = {
     type: `text`,
-    payload: null
+    payload
   };
   return request;
 };
