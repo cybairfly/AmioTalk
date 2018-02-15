@@ -1,6 +1,6 @@
 // const api = require('./~callback/api');
-// const api = require('./~promise/api');
-const api = require('./api');
+const api = require('./~promise/api');
+// const api = require('./api');
 const msg = require('./msg');
 
 const express = require('express');
