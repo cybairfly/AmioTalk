@@ -15,7 +15,7 @@ require('dotenv').config();
 
 app.post('/webhook/amio', (req, res) => {
   console.log(`post webhook called`);
-  api.getContact()
+  api.getContact(req.body.data.channel.id, req.body.data.contact.id)
   .then(contact => api.getFullName(contact))
   .then(name => ({
     channel: `${req.body.data.channel.id}`,
