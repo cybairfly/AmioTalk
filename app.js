@@ -4,16 +4,18 @@ const api = require('./~promise/api');
 const msg = require('./msg');
 
 const express = require('express');
+const parser = require('body-parser');
 const app = express();
-require('dotenv').config();
 
-api.logSyntax();
+app.use(bodyParser.json());
+
+require('dotenv').config();
 
 // const message = msg.Message(channel, contact);
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook/amio', (req, res) => {
   console.log(`post webhook called`);
-  console.log(req);
+  console.log(req.body);
   // let body = req.body;
   //
   //     if (webhook_event.message) {
