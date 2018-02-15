@@ -31,6 +31,9 @@ app.post('/webhook', (req, res) => {
 
 });
 
+app.get('/', (req, res) => {
+      res.status(200).send('Up and down and... running.');
+});
 
                                                                   //Multisender
 /*
