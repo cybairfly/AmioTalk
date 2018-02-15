@@ -8,6 +8,11 @@ const getStatus = (channel) => {
   return axios(config);
 }
 
+const getContact = (channel, contact) => {
+  const config = cfg.getConfig(`channels/${channel}/contacts/${contact}`, 'get');
+  return axios(config);
+}
+
 const getContacts = (channel) => {
   const config = cfg.getConfig(`channels/${channel}/contacts`, 'get');
   return axios(config);
@@ -49,11 +54,16 @@ const logStatus = async channel => {
   }
 }
 
+const getFullName = async (channel, contact) => {
+  let fullName = await getContact(channel, contact);
+  return fullName;
+}
+
 const postMessages = async (channel, message) => {
   try {
     const contacts = await getContacts(channel);
-    //let ids = contacts.data.map(contact => contact.id);
-    let ids = ['1803539683052785'];
+    let ids = contacts.data.map(contact => contact.id);
+    // let ids = ['1803539683052785'];
     messageAll(ids, message);
   }
   catch (e) {

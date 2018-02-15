@@ -8,6 +8,11 @@ const getStatus = (channel) => {
   return axios(config);
 }
 
+const getContact = (channel, contact) => {
+  const config = cfg.getConfig(`channels/${channel}/contacts/${contact}`, 'get');
+  return axios(config);
+}
+
 const getContacts = (channel) => {
   const config = cfg.getConfig(`channels/${channel}/contacts`, 'get');
   return axios(config);
@@ -47,6 +52,8 @@ const logStatus = channel => {
   })
   .catch((e) => console.log(e));
 }
+
+const getFullName = contact => contact.name;
 
 const postMessages = (channel, message) => {
   getContacts(channel)
