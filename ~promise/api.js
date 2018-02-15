@@ -53,7 +53,7 @@ const logStatus = channel => {
   .catch((e) => console.log(e));
 }
 
-const getFullName = contact => contact.name;
+const getFullName = contact => contact.data.name;
 
 const postMessages = (channel, message) => {
   getContacts(channel)
