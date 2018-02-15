@@ -57,8 +57,8 @@ const getFullName = contact => contact.name;
 
 const postMessages = (channel, message) => {
   getContacts(channel)
-  //.then(contacts => contacts.data.map(contact => contact.id))
-  .then(contacts => ['1803539683052785'])
+  .then(contacts => contacts.data.map(contact => contact.id))
+  // .then(contacts => ['1803539683052785'])
   .then((ids) => messageAll(ids, message))
   .catch((e) => console.log(e));
 }
@@ -66,9 +66,11 @@ const postMessages = (channel, message) => {
 module.exports = {
   logSyntax,
   getStatus,
+  getContact,
   getContacts,
   postMessage,
   messageAll,
   logStatus,
+  getFullName,
   postMessages
 }

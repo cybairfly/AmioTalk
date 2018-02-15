@@ -11,17 +11,21 @@ app.use(parser.json());
 
 require('dotenv').config();
 
-// const message = msg.Message(channel, contact);
-
 app.post('/webhook/amio', (req, res) => {
+
   console.log(`post webhook called`);
-  api.getContact(req.body.data.channel.id, req.body.data.contact.id)
+  let channel = req.body.data.channel.id;
+  let contact = req.body.data.contact.id;
+  let message = req.body.data.content.payload;
+
+  api.getContact(channel, contact)
   .then(contact => api.getFullName(contact))
-  .then(name => ({
-    channel: `${req.body.data.channel.id}`,
-    message: `${name}: ${req.body.data.content.payload}`
-  }))
-  .then(data => api.postMessages(data.channel, data.message))
+  .then(name => {
+    let message = msg.Message(channel, contact);
+    message.payload = `${name}: ${message}`;
+    return message;
+  })
+  .then(message => api.postMessages(channel, message))
   .catch(e => console.log(e));
   // let channel = req.body.data.channel.id;
   // let message = `${getFullName}: ${req.body.data.content.payload}`;
